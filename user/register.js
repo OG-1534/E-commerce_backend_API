@@ -30,11 +30,27 @@ module.exports = async function (params, context) {
 
 		console.log("The user count is: ", count);
 		// Hashing password
-
-
+		const hashedPassword = await bcrypt.hash(password, 10);
 		const newUser = {name, email, "password": hashedPassword, "isAdmin": false};
+
+		if(count == 0) {
+			newUser.isAdmin = true;
+		}
+
+		await userTable.save(newUser);
+
+		const result = await userTable
+		.where({email})
+		.projection({password: 0. isAdmin: 0})
+		.find();
+
+		context.status(201);
+		return {
+			...result
+		}
 
 	} catch(err) {
 		context.status(500);
 		return {"message": err.message};
 	}
+};
