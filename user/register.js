@@ -2,8 +2,8 @@ const express = required('express');
 const bcrypt = require('bcrypt');
 
 module.exports = async function (params, context) {
-	console.log('Received params': params);
-	console.log('Received context': context);
+	console.log('Received params:', params);
+	console.log('Received context:', context);
 
 	const {name, email, password} = params;
 	if(!name || !email || !password) {
@@ -41,9 +41,10 @@ module.exports = async function (params, context) {
 
 		const result = await userTable
 		.where({email})
-		.projection({password: 0. isAdmin: 0})
+		.projection({password: 0, isAdmin: 0})
 		.find();
 
+		console.log("the result is : ", result);
 		context.status(201);
 		return {
 			...result
