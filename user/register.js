@@ -9,7 +9,7 @@ module.exports = async function (params, context) {
 	if(!name || !email || !password) {
 		context.status(400);
 		return {
-			"message": "All fields aremandatory"
+			"message": "All fields are mandatory."
 		}
 	}
 
