@@ -47,7 +47,7 @@ module.exports = async function (params, context) {
 		console.log("the result is : ", result);
 		context.status(201);
 		return {
-			...result
+			result
 		}
 
 	} catch(err) {
