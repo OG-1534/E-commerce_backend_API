@@ -31,7 +31,7 @@ module.exports = async function (params, context) {
             "isAdmin": user.isAdmin
         },
         process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn: 'id'}
+        {expiresIn: '1d'}
     );
     
     const currentUser = (...user, accessToken);
