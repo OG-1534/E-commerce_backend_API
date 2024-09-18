@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 require('dotenv').config;
 
-module.exports = async function (context) {
+module.exports.verifyToken = async function (context) {
 	let token;
 	let authHeader = context.headers.Authorization || context.headers.authorization;
 	console.log(authHeader);
